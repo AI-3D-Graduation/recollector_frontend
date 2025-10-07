@@ -1,79 +1,102 @@
 
 import { useNavigate } from 'react-router-dom';
 import Navigation from '../widgets/Navigation';
-import Button from '../shared/Button';
 
 export default function Home() {
   const navigate = useNavigate();
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900/20 to-cyan-900/20">
-      <Navigation />
-      
-      {/* Hero Section */}
-      <div className="relative min-h-screen flex items-center justify-center px-6">
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 opacity-30"
-          style={{
-            backgroundImage: `url('https://readdy.ai/api/search-image?query=Futuristic%203D%20modeling%20laboratory%20with%20holographic%20displays%2C%20advanced%20computers%2C%20floating%20geometric%20shapes%2C%20purple%20and%20cyan%20neon%20lights%2C%20dark%20ambient%20lighting%2C%20modern%20minimalist%20design%2C%20high-tech%20workspace%20environment&width=1920&height=1080&seq=hero-bg&orientation=landscape')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-        />
-        
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 via-purple-900/40 to-cyan-900/40" />
-        
-        {/* Content */}
-        <div className="relative z-10 text-center max-w-4xl mx-auto">
-          <div className="mb-8">
-            <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
-                3D Model Generation
-              </span>
-              <br />
-              <span className="text-white">Platform</span>
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed">
-              Upload a photo and generate a 3D model instantly using advanced AI technology
-            </p>
-          </div>
-          
-          {/* CTA Button */}
-          <div className="space-y-6">
-            <Button
-              variant="primary"
-              size="lg"
-              className="text-xl px-12 py-5 shadow-2xl shadow-purple-500/30 hover:shadow-purple-500/50 transform hover:scale-105"
-              onClick={() => navigate('/upload')}
-            >
-              <i className="ri-upload-cloud-2-line text-2xl mr-3"></i>
-              Upload Photo
-            </Button>
-            
-            <div className="flex justify-center space-x-8 text-gray-400 text-sm">
-              <div className="flex items-center">
-                <i className="ri-check-line text-green-400 mr-2"></i>
-                AI-Powered Generation
+    <div className="h-screen bg-black overflow-hidden">
+      {/*네비게이션*/}
+        <nav className="w-full bg-transparent absolute top-0 left-0 z-50">
+          <div className="max-w-7xl mx-auto px-8 py-6">
+            <div className="flex items-center justify-between">
+              {/* Left - Brand Name */}
+              <div
+                className="cursor-pointer group"
+                onClick={() => navigate('/')}
+              >
+                <h2 className="text-2xl font-serif tracking-wide text-white">
+                  Recollector
+                </h2>
+                
               </div>
-              <div className="flex items-center">
-                <i className="ri-check-line text-green-400 mr-2"></i>
-                Multiple Export Formats
-              </div>
-              <div className="flex items-center">
-                <i className="ri-check-line text-green-400 mr-2"></i>
-                Instant Processing
+              
+              {/* Right - Menu Items */}
+              <div className="flex items-center space-x-8">
+                <button
+                  onClick={() => navigate('/')}
+                  className="text-sm font-light tracking-wide text-white hover:text-white/70 transition-colors duration-300"
+                >
+                  About Us
+                </button>
+                <button
+                  onClick={() => navigate('/')}
+                  className="px-5 py-2 border border-white/40 rounded-full text-sm font-light tracking-wide text-white hover:bg-white hover:text-black transition-all duration-300"
+                >
+                  Contact Us
+                </button>
               </div>
             </div>
           </div>
+        </nav>
+
+      {/* Hero Section */}
+      <div className="relative h-full flex items-center justify-center px-6">
+        {/* Background with texture */}
+        <div className="absolute inset-0">
+          <img src="img/exhibition_background.png"/>
+          <div className="absolute inset-0 bg-black opacity-20"></div>
         </div>
         
-        {/* Floating Elements */}
-        <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-br from-purple-500/30 to-cyan-500/30 rounded-full blur-xl animate-pulse" />
-        <div className="absolute bottom-32 right-16 w-32 h-32 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-full blur-2xl animate-pulse delay-1000" />
-        <div className="absolute top-1/3 right-20 w-16 h-16 bg-gradient-to-br from-pink-500/40 to-purple-500/40 rounded-full blur-lg animate-pulse delay-500" />
+        {/* Oval Image Container */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <img 
+            src="/img/exhibition_main.png"
+            alt="Main"
+            className="max-w-full max-h-full object-contain opacity-100"
+            style={{ maxWidth: '80%', maxHeight: '70%' }}
+          />
+        </div>
+        
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/40" />
+        
+        {/* Content */}
+        <div className="relative z-10 text-center max-w-4xl mx-auto">
+          {/* Main Logo/Title */}
+          <div className="mb-12">
+            <button
+              onClick={() => navigate('/upload')}
+              className="group"
+            >
+              <h1 className="text-7xl md:text-8xl lg:text-9xl font-light mb-6 leading-none tracking-wider transition-transform duration-300 group-hover:scale-105">
+                <span className="text-white font-serif" style={{ textShadow: '2px 2px 20px rgba(0,0,0,0.8)' }}>
+                  Recollector
+                </span>
+              </h1>
+              <p className="text-base md:text-lg text-white/80 font-serif tracking-wide italic">
+                Bring your memories into dimension
+              </p>
+            </button>
+          </div>
+          
+          
+        </div>
+        
+        {/* Subtle decorative elements */}
+        <div 
+          className="absolute w-1 h-1 bg-white/20 rounded-full animate-pulse"
+          style={{ top: '25%', left: '25%' }}
+        />
+        <div 
+          className="absolute w-1 h-1 bg-white/20 rounded-full animate-pulse"
+          style={{ bottom: '33%', right: '25%', animationDelay: '1s' }}
+        />
+        <div 
+          className="absolute w-1 h-1 bg-white/20 rounded-full animate-pulse"
+          style={{ top: '50%', right: '33%', animationDelay: '0.5s' }}
+        />
       </div>
     </div>
   );
