@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { usePhotoUpload } from '../../features';
+import { usePhotoUpload, useGenerateModel } from '../../features';
 import { EmptyUploadZone } from './NoPhoto';
 import { PreviewUploadedPhoto } from './Preview';
 import { UploadTips } from './UploadTips';
@@ -8,24 +8,44 @@ import { UploadingView } from './Uploading';
 
 export function PhotoUploadWidget() {
   const navigate = useNavigate();
+  
+  // 파일 업로드 상태 관리
   const {
     selectedFile,
     previewUrl,
     isUploading,
     fileInputRef,
     handleFileSelect,
-    handleFileInputChange,  // 🔍 이것도 가져와야 합니다!
+    handleFileInputChange,
     clearFile,
   } = usePhotoUpload();
 
-  const handleNextStep = () => {
-    if (selectedFile) {
-      navigate('/loading');
+  // 3D 모델 생성 API 호출
+  const {
+    taskId,
+    isGenerating,
+    error: generateError,
+    startGeneration,
+  } = useGenerateModel();
+
+  // Generate 버튼 클릭 시
+  const handleGenerate = async () => {
+    if (!selectedFile) return;
+
+    try {
+      // 백엔드에 파일 전송 및 생성 시작
+      await startGeneration(selectedFile);
+      
+      // 성공 시 loading 페이지로 이동 (task_id 전달)
+      // navigate(`/loading?taskId=${taskId}`); // 이렇게도 가능
+      navigate('/loading', { 
+        state: { taskId } // 또는 state로 전달
+      });
+    } catch (err) {
+      // 에러는 useGenerateModel에서 처리됨
+      console.error('Generation failed:', err);
     }
   };
-
-  console.log('🔍 Widget - fileInputRef:', fileInputRef);
-  console.log('🔍 Widget - fileInputRef.current:', fileInputRef.current);
 
   return (
     <div className="py-20 px-6">
@@ -34,15 +54,28 @@ export function PhotoUploadWidget() {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4 animate-fade-in">
             <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-              Upload Your Photo
+              Photo Upload
             </span>
           </h1>
           <p className="text-gray-200 text-lg animate-fade-in animation-delay-200">
-            Choose a high-quality photo to convert into 3D model
+            사진 업로드
           </p>
         </div>
 
-        {/* Upload Card - 상태별로 다른 컴포넌트 렌더링 */}
+        {/* 에러 메시지 */}
+        {generateError && (
+          <Card className="mb-6 border-red-500/50 bg-red-500/10">
+            <div className="flex items-center space-x-3">
+              <i className="ri-error-warning-line text-2xl text-red-400"></i>
+              <div>
+                <h4 className="font-semibold text-white mb-1"> Generation Failed </h4>
+                <p className="text-sm text-red-300">{generateError}</p>
+              </div>
+            </div>
+          </Card>
+        )}
+
+        {/* Upload Card */}
         <Card className="mb-8 animate-fade-in animation-delay-400">
           {isUploading && <UploadingView />}
           
@@ -62,6 +95,7 @@ export function PhotoUploadWidget() {
             />
           )}
           
+          {/* Hidden input */}
           <input
             ref={fileInputRef}
             type="file"
@@ -71,17 +105,27 @@ export function PhotoUploadWidget() {
           />
         </Card>
 
-        {/* Next Step Button */}
+        {/* Generate Button */}
         {selectedFile && !isUploading && (
           <div className="text-center animate-fade-in animation-delay-500">
             <Button
               variant="primary"
               size="lg"
-              onClick={handleNextStep}
-              className="px-12 shadow-2xl shadow-purple-500/30 hover:shadow-purple-500/50 transform hover:scale-105 transition-all duration-300"
+              onClick={handleGenerate}
+              disabled={isGenerating}
+              className="px-12 shadow-2xl shadow-purple-500/30 hover:shadow-purple-500/50 transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <i className="ri-arrow-right-line mr-2"></i>
-              Generate 3D Model
+              {isGenerating ? (
+                <>
+                  <i className="ri-loader-4-line mr-2 animate-spin"></i>
+                  Generating...
+                </>
+              ) : (
+                <>
+                  <i className="ri-arrow-right-line mr-2"></i>
+                  3D 모델로 변환하기
+                </>
+              )}
             </Button>
           </div>
         )}

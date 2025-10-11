@@ -1,3 +1,4 @@
+import { TiCamera } from "react-icons/ti";
 import { useDragAndDrop } from "../../features";
 import { Button } from "../../shared";
 
@@ -12,7 +13,6 @@ export function EmptyUploadZone({ fileInputRef, onFileSelect }: EmptyUploadZoneP
   });
 
   const handleClickToUpload = (e?: React.MouseEvent) => {
-    // ✅ 이벤트가 있으면 전파 중지 (Button 클릭 시)
     if (e) {
       e.stopPropagation();
     }
@@ -29,11 +29,12 @@ export function EmptyUploadZone({ fileInputRef, onFileSelect }: EmptyUploadZoneP
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
-      onClick={handleClickToUpload}  // 전체 영역 클릭 시
+      onClick={handleClickToUpload}
     >
       <div className={`w-24 h-24 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-6 transition-transform duration-300 ${
         isDragging ? 'animate-bounce' : 'hover:rotate-12'
       }`}>
+        <TiCamera />
         <i className="ri-upload-cloud-2-line text-4xl text-white"></i>
       </div>
       
@@ -48,15 +49,15 @@ export function EmptyUploadZone({ fileInputRef, onFileSelect }: EmptyUploadZoneP
       <Button 
         variant="secondary" 
         size="md"
-        onClick={handleClickToUpload}  // 명시적으로 onClick 전달
+        onClick={handleClickToUpload}
         className="transform hover:scale-105 transition-transform duration-200"
       >
         <i className="ri-folder-open-line mr-2"></i>
-        Choose File
+        파일 선택
       </Button>
       
       <p className="text-sm text-gray-500 mt-4">
-        Supported formats: JPG, PNG, WEBP • Max size: 10MB
+        지원되는 항목: JPG, PNG, WEBP • Max size: 10MB
       </p>
     </div>
   );

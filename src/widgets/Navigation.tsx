@@ -5,38 +5,37 @@ export default function Navigation() {
   const navigate = useNavigate();
 
   return (
-    <nav className="w-full bg-gray-900/90 backdrop-blur-md border-b border-gray-700 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div
-            className="flex items-center space-x-3 cursor-pointer group"
-            onClick={() => navigate('/')}
-          >
-            {/* Camera Icon */}
-            <div className="relative w-10 h-10 flex items-center justify-center">
-              <div className="w-8 h-6 bg-gradient-to-r from-purple-400 to-cyan-400 rounded-lg relative group-hover:scale-110 transition-transform duration-300">
-                {/* Camera body */}
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-lg shadow-lg">
-                  {/* Lens */}
-                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-gray-900 rounded-full border-2 border-white/30">
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-gradient-to-br from-purple-300 to-cyan-300 rounded-full animate-pulse"></div>
-                  </div>
-                  {/* Flash */}
-                  <div className="absolute top-0.5 right-1 w-1 h-1 bg-white rounded-full opacity-80"></div>
-                  {/* Viewfinder */}
-                  <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-1 bg-gradient-to-r from-purple-400 to-cyan-400 rounded-t"></div>
-                </div>
+    <nav className="w-full bg-transparent absolute top-0 left-0 z-50">
+          <div className="max-w-7xl mx-auto px-8 py-6">
+            <div className="flex items-center justify-between">
+              {/* Left - Brand Name */}
+              <div
+                className="cursor-pointer group"
+                onClick={() => navigate('/')}
+              >
+                <h2 className="text-2xl font-serif tracking-wide text-white">
+                  Recollector
+                </h2>
+                
+              </div>
+              
+              {/* Right - Menu Items */}
+              <div className="flex items-center space-x-8">
+                <button
+                  onClick={() => navigate('/')}
+                  className="text-sm font-light tracking-wide text-white hover:text-white/70 transition-colors duration-300"
+                >
+                  About Us
+                </button>
+                <button
+                  onClick={() => navigate('/')}
+                  className="px-5 py-2 border border-white/40 rounded-full text-sm font-light tracking-wide text-white hover:bg-white hover:text-black transition-all duration-300"
+                >
+                  Contact Us
+                </button>
               </div>
             </div>
-            {/* Brand Name */}
-            <div className="text-2xl font-bold" style={{ fontFamily: '"Pacifico", serif' }}>
-              <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent group-hover:from-purple-300 group-hover:to-cyan-300 transition-all duration-300">
-                Recollector
-              </span>
-            </div>
           </div>
-        </div>
-      </div>
-    </nav>
+        </nav>
   );
 }

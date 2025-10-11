@@ -6,10 +6,10 @@ export function UploadingView() {
       </div>
       
       <h3 className="text-xl font-semibold text-white mb-2">
-        Uploading Photo...
+        사진을 업로드 하는 중...
       </h3>
       <p className="text-gray-300">
-        Please wait while we process your image
+        잠시만 기다려주세요...
       </p>
       
       <div className="mt-6 w-64 mx-auto bg-gray-700 rounded-full h-2 overflow-hidden">

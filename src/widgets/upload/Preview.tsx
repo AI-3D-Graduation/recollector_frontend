@@ -45,7 +45,7 @@ export function PreviewUploadedPhoto({
         className="mb-6 transform hover:scale-105 transition-transform duration-200 animate-fade-in animation-delay-300"
       >
         <i className="ri-refresh-line mr-2"></i>
-        Choose Different File
+        다른 사진 고르기
       </Button>
     </div>
   );
