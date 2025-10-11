@@ -1,6 +1,6 @@
 
 import { useNavigate } from 'react-router-dom';
-import Navigation from '../widgets/Navigation';
+import Navigation from '../shared/Navigation';
 
 export default function Home() {
   const navigate = useNavigate();

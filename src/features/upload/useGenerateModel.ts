@@ -10,49 +10,36 @@ interface UseGenerateModelReturn {
   reset: () => void;
 }
 
-export function useGenerateModel(): UseGenerateModelReturn {
-  const [taskId, setTaskId] = useState<string | null>(null);
+export const useGenerateModel = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [taskId, setTaskId] = useState<string | null>(null);
 
-  const startGeneration = async (file: File) => {
+  const startGeneration = async (file: File): Promise<string> => {
+    setIsGenerating(true);
+    setError(null);
+
     try {
-      setIsGenerating(true);
-      setError(null);
-
-      console.log('📤 3D 모델 생성 시작:', file.name);
-
-      const response: GenerateResponse = await generateModel(file);
-
-      console.log('✅ 생성 요청 성공! Task ID:', response.task_id);
-
-      setTaskId(response.task_id);
+      const response = await generateModel(file);
+      
+      // task_id 추출 (백엔드 응답에 따라 조정)
+      const taskId = response.task_id;
+      setTaskId(taskId);
+      
+      return taskId; // task_id 반환
     } catch (err: any) {
-      console.error('❌ 생성 요청 실패:', err);
-      
-      const errorMessage = 
-        err.response?.data?.detail || 
-        err.response?.data?.error || 
-        err.message || 
-        'Failed to start generation';
-      
+      const errorMessage = err.response?.data?.message || err.message || 'Model generation failed';
       setError(errorMessage);
+      throw err;
     } finally {
       setIsGenerating(false);
     }
   };
 
-  const reset = () => {
-    setTaskId(null);
-    setError(null);
-    setIsGenerating(false);
-  };
-
   return {
-    taskId,
+    startGeneration,
     isGenerating,
     error,
-    startGeneration,
-    reset,
+    taskId,
   };
-}
+};

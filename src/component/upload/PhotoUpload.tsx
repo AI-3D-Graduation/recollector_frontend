@@ -22,7 +22,6 @@ export function PhotoUploadWidget() {
 
   // 3D 모델 생성 API 호출
   const {
-    taskId,
     isGenerating,
     error: generateError,
     startGeneration,
@@ -33,17 +32,16 @@ export function PhotoUploadWidget() {
     if (!selectedFile) return;
 
     try {
-      // 백엔드에 파일 전송 및 생성 시작
-      await startGeneration(selectedFile);
+      // 백엔드에 파일 전송 및 task_id 받기
+      const taskId = await startGeneration(selectedFile);
       
-      // 성공 시 loading 페이지로 이동 (task_id 전달)
-      // navigate(`/loading?taskId=${taskId}`); // 이렇게도 가능
-      navigate('/loading', { 
-        state: { taskId } // 또는 state로 전달
-      });
+      // task_id를 URL 파라미터로 전달하여 result 페이지로 이동
+      //navigate(`/result/${taskId}`);
+      
+      navigate(`/loading/${taskId}`);
     } catch (err) {
-      // 에러는 useGenerateModel에서 처리됨
       console.error('Generation failed:', err);
+      // 에러 토스트나 모달 표시
     }
   };
 

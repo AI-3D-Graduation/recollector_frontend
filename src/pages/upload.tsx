@@ -1,5 +1,5 @@
-import { PhotoUploadWidget } from "../widgets/upload/PhotoUpload";
-import Navigation from "../widgets/Navigation";
+import { PhotoUploadWidget } from "../component/upload/PhotoUpload";
+import Navigation from "../shared/Navigation";
 
 export default function UploadPage() {
   return (

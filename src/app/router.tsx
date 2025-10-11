@@ -6,8 +6,8 @@ const { Home, Upload, Result, Loading, NotFound } = pages;
 const routes: RouteObject[] = [
   { path: "/", element: <Home /> },
   { path: "/upload", element: <Upload /> },
-  { path: "/loading", element: <Loading /> },
-  { path: "/result", element: <Result /> },
+  { path: "/loading/:taskId", element: <Loading /> },
+  { path: "/result/:taskId", element: <Result /> },
   { path: "*", element: <NotFound /> },
 ];
 
