@@ -1,8 +1,10 @@
+import { FaCheck } from "react-icons/fa";
+
 export type StepStatus = 'completed' | 'processing' | 'pending';
 
 interface Step {
   id: number;
-  label: string;
+  label: string; // 한글 텍스트
   icon: string;
 }
 
@@ -28,7 +30,7 @@ export const StepIndicator = ({ steps, currentStep, className = '' }: StepIndica
             key={step.id}
             className={`flex items-center justify-between max-w-md mx-auto p-4 rounded-lg transition-all duration-500 ${
               status === 'completed'
-                ? 'bg-green-500/10 border border-green-500/30'
+                ? 'bg-cyan-500/10 border border-cyan-500/30'
                 : status === 'processing'
                 ? 'bg-purple-500/10 border border-purple-500/30 animate-pulse'
                 : 'bg-gray-800/50 border border-gray-600/30'
@@ -39,14 +41,14 @@ export const StepIndicator = ({ steps, currentStep, className = '' }: StepIndica
               <div
                 className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
                   status === 'completed'
-                    ? 'bg-green-500 text-white'
+                    ? 'bg-cyan-500 text-white'
                     : status === 'processing'
                     ? 'bg-purple-500 text-white'
                     : 'bg-gray-600 text-gray-400'
                 }`}
               >
                 {status === 'completed' ? (
-                  <i className="ri-check-line text-lg"></i>
+                  <FaCheck />
                 ) : status === 'processing' ? (
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                 ) : (
@@ -56,7 +58,7 @@ export const StepIndicator = ({ steps, currentStep, className = '' }: StepIndica
               <span
                 className={`font-medium transition-colors duration-300 ${
                   status === 'completed'
-                    ? 'text-green-400'
+                    ? 'text-cyan-400'
                     : status === 'processing'
                     ? 'text-purple-400'
                     : 'text-gray-500'

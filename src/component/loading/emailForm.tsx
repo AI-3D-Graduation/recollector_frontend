@@ -16,7 +16,7 @@ export const EmailForm = ({ taskId }: EmailFormProps) => {
           <div className="flex items-center justify-center space-x-2">
             <i className="ri-check-line text-green-400 text-xl"></i>
             <p className="text-green-400 font-medium">
-              Email saved! We'll notify you when it's ready.
+              접수 완료!
             </p>
           </div>
         </div>
@@ -33,7 +33,7 @@ export const EmailForm = ({ taskId }: EmailFormProps) => {
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email address"
+            placeholder="이메일 주소를 입력하세요."
             className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200"
             required
             disabled={isSubmitting}
@@ -50,7 +50,7 @@ export const EmailForm = ({ taskId }: EmailFormProps) => {
 
       <div className="mt-4 p-3 bg-gray-800/50 border border-gray-600/30 rounded-lg">
         <p className="text-sm text-white">
-          The file address will be sent to your email when the conversion is complete.
+          변환이 완료되면 이메일로 결과물을 보내드립니다.
         </p>
       </div>
     </div>

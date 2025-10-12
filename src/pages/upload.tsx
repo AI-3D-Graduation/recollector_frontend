@@ -20,7 +20,7 @@ export default function UploadPage() {
         <Navigation />
 
         {/* 중앙 정렬 영역 */}
-        <div className="flex-grow flex items-center justify-center">
+        <div className="flex-grow flex items-start justify-center px-4 sm:px-6 pt-8">
           <PhotoUploadWidget />
         </div>
       </div>

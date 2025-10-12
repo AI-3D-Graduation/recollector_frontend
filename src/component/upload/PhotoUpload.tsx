@@ -46,7 +46,7 @@ export function PhotoUploadWidget() {
   };
 
   return (
-    <div className="py-20 px-6">
+    <div className="px-6 w-full">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
