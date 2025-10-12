@@ -20,4 +20,7 @@ export interface TaskStatusResponse {
   model_url?: string;
   viewer_url?: string;
   error?: string;
+  vertices?: number;
+  faces?: number;
+  generation_time?: number;
 }
