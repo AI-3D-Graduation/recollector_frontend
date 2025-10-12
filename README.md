@@ -1,145 +1,96 @@
-# Getting Started with Create React App
+# Recollector Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React와 TypeScript 기반의 3D 모델링 생성 웹 어플리케이션입니다. 사용자가 사진을 업로드 하면 사진을 바탕으로 3D 모델을 생성할 수 있습니다.
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📁 프로젝트 구조
 
 ```
-recollector_frontend
-├─ .env
-├─ package-lock.json
-├─ package.json
-├─ public
-│  ├─ favicon.ico
-│  ├─ img
-│  │  ├─ exhibition_background.png
-│  │  ├─ exhibition_main.png
-│  │  └─ main_background.jpg
-│  ├─ index.html
-│  ├─ logo192.png
-│  ├─ logo512.png
-│  ├─ manifest.json
-│  └─ robots.txt
-├─ README.md
-├─ src
-│  ├─ app
-│  │  └─ router.tsx
-│  ├─ App.css
-│  ├─ App.test.js
-│  ├─ App.tsx
-│  ├─ component
-│  │  ├─ result
-│  │  │  └─ ModelViewer.tsx
-│  │  └─ upload
-│  │     ├─ NoPhoto.tsx
-│  │     ├─ PhotoUpload.tsx
-│  │     ├─ Preview.tsx
-│  │     ├─ Uploading.tsx
-│  │     └─ UploadTips.tsx
-│  ├─ entities
-│  │  ├─ api
-│  │  │  ├─ emailApi.ts
-│  │  │  ├─ modelApi.ts
-│  │  │  └─ taskApi.ts
-│  │  ├─ index.ts
-│  │  ├─ modelGenerate.ts
-│  │  ├─ modelType.ts
-│  │  └─ taskType.ts
-│  ├─ features
-│  │  ├─ index.ts
-│  │  └─ upload
-│  │     ├─ useDragAndDrop.ts
-│  │     ├─ useGenerateModel.ts
-│  │     └─ usePhotoUpload.ts
-│  ├─ index.css
-│  ├─ index.tsx
-│  ├─ logo.svg
-│  ├─ pages
-│  │  ├─ error.tsx
-│  │  ├─ home.tsx
-│  │  ├─ index.tsx
-│  │  ├─ loading.tsx
-│  │  ├─ result.tsx
-│  │  └─ upload.tsx
-│  ├─ reportWebVitals.js
-│  ├─ setupTests.js
-│  └─ shared
-│     ├─ api
-│     │  ├─ apiClient.ts
-│     │  ├─ config.ts
-│     │  └─ index.ts
-│     ├─ Button.tsx
-│     ├─ Card.tsx
-│     ├─ index.ts
-│     ├─ lib
-│     │  └─ fileValidator.ts
-│     └─ Navigation.tsx
-├─ tailwind.config.js
-└─ tsconfig.json
-
+src/
+├─ app/
+│  └─ router.tsx                 # 애플리케이션 라우팅 설정
+│
+├─ pages/                        # 페이지 컴포넌트
+│  ├─ index.tsx                  
+│  ├─ home.tsx                   
+│  ├─ upload.tsx                 
+│  ├─ loading.tsx                
+│  ├─ result.tsx                 
+│  └─ error.tsx                  
+│
+├─ component/                    # UI 컴포넌트
+│  ├─ upload/                    # 업로드 관련 컴포넌트
+│  │  ├─ PhotoUpload.tsx        
+│  │  ├─ NoPhoto.tsx             
+│  │  ├─ Preview.tsx             
+│  │  ├─ Uploading.tsx           
+│  │  └─ UploadTips.tsx          
+│  │
+│  ├─ loading/                   # 로딩 관련 컴포넌트
+│  │  ├─ loadingProgress.tsx   
+│  │  └─ emailForm.tsx           
+│  │
+│  └─ result/                    # 결과 관련 컴포넌트
+│     └─ ModelViewer.jsx         # 3D 모델 뷰어 (Three.js)
+│
+├─ features/                     # 비즈니스 로직 및 커스텀 훅
+│  ├─ index.ts                   
+│  ├─ upload/                    # 업로드 기능
+│  │  ├─ usePhotoUpload.ts      # 사진 업로드 로직
+│  │  ├─ useDragAndDrop.ts      # 드래그 앤 드롭 기능
+│  │  └─ useGenerateModel.ts    # 모델 생성 요청 로직
+│  │
+│  └─ loading/                   # 로딩 기능
+│     ├─ useTaskPolling.ts      # 작업 상태 폴링
+│     └─ useEmailSubmit.ts      # 이메일 제출 로직
+│
+├─ entities/                     # 데이터 모델 및 API
+│  ├─ index.ts                   
+│  ├─ api/                       # API 호출 함수
+│  │  ├─ taskApi.ts             
+│  │  ├─ modelApi.ts            
+│  │  └─ emailApi.ts            
+│  │
+│  ├─ taskType.ts               
+│  ├─ modelType.ts              
+│  └─ modelGenerate.ts          # 모델 생성 관련 타입
+│
+├─ shared/                       # 공유 컴포넌트 및 유틸리티
+│  ├─ index.ts                   
+│  ├─ api/                       
+│  │  ├─ index.ts               
+│  │  ├─ apiClient.ts           # Axios 클라이언트 설정
+│  │  └─ config.ts              # API 설정값
+│  │
+│  ├─ lib/                       # 유틸리티 함수
+│  │  ├─ fileValidator.ts       
+│  │  └─ pollingUtils.ts        
+│  │
+│  ├─ Button.tsx                 
+│  ├─ Card.tsx                   
+│  ├─ Navigation.tsx             
+│  ├─ ProgressBar.tsx            
+│  └─ StepIndicator.tsx          
+│
+└─ setupTests.js                # 테스트 설정
 ```
+
+
+## 설치 및 실행
+
+```bash
+# 의존성 설치
+npm install
+
+# 개발 서버 실행 (포트 3000)
+npm start
+
+# 프로덕션 빌드
+npm run build
+
+# 테스트 실행
+npm test
+```
+
+## 프록시 설정
+
+백엔드 API는 `http://localhost:8000`으로 프록시 설정되어 있습니다.
