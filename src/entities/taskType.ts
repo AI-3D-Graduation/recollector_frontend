@@ -6,13 +6,18 @@ export interface Task {
   progress: number;
   current_step?: string;
   model_url?: string;
+  viewer_url?: string;
   error?: string;
+  vertices?: number;
+  faces?: number;
+  generation_time?: number;
 }
 
-export interface TaskResponse {
+export interface TaskStatusResponse {
   status: TaskStatus;
   progress: number;
   current_step?: string;
   model_url?: string;
+  viewer_url?: string;
   error?: string;
 }

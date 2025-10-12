@@ -1,4 +1,4 @@
-import { apiClient } from '../shared/lib/api';
+import { apiClient } from '../shared/api/apiClient';
 import { GenerateResponse, GenerationStatus } from './modelType';
 
 /**

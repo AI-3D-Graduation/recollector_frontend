@@ -68,3 +68,78 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+```
+recollector_frontend
+├─ .env
+├─ package-lock.json
+├─ package.json
+├─ public
+│  ├─ favicon.ico
+│  ├─ img
+│  │  ├─ exhibition_background.png
+│  │  ├─ exhibition_main.png
+│  │  └─ main_background.jpg
+│  ├─ index.html
+│  ├─ logo192.png
+│  ├─ logo512.png
+│  ├─ manifest.json
+│  └─ robots.txt
+├─ README.md
+├─ src
+│  ├─ app
+│  │  └─ router.tsx
+│  ├─ App.css
+│  ├─ App.test.js
+│  ├─ App.tsx
+│  ├─ component
+│  │  ├─ result
+│  │  │  └─ ModelViewer.tsx
+│  │  └─ upload
+│  │     ├─ NoPhoto.tsx
+│  │     ├─ PhotoUpload.tsx
+│  │     ├─ Preview.tsx
+│  │     ├─ Uploading.tsx
+│  │     └─ UploadTips.tsx
+│  ├─ entities
+│  │  ├─ api
+│  │  │  ├─ emailApi.ts
+│  │  │  ├─ modelApi.ts
+│  │  │  └─ taskApi.ts
+│  │  ├─ index.ts
+│  │  ├─ modelGenerate.ts
+│  │  ├─ modelType.ts
+│  │  └─ taskType.ts
+│  ├─ features
+│  │  ├─ index.ts
+│  │  └─ upload
+│  │     ├─ useDragAndDrop.ts
+│  │     ├─ useGenerateModel.ts
+│  │     └─ usePhotoUpload.ts
+│  ├─ index.css
+│  ├─ index.tsx
+│  ├─ logo.svg
+│  ├─ pages
+│  │  ├─ error.tsx
+│  │  ├─ home.tsx
+│  │  ├─ index.tsx
+│  │  ├─ loading.tsx
+│  │  ├─ result.tsx
+│  │  └─ upload.tsx
+│  ├─ reportWebVitals.js
+│  ├─ setupTests.js
+│  └─ shared
+│     ├─ api
+│     │  ├─ apiClient.ts
+│     │  ├─ config.ts
+│     │  └─ index.ts
+│     ├─ Button.tsx
+│     ├─ Card.tsx
+│     ├─ index.ts
+│     ├─ lib
+│     │  └─ fileValidator.ts
+│     └─ Navigation.tsx
+├─ tailwind.config.js
+└─ tsconfig.json
+
+```
