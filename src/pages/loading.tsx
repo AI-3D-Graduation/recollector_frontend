@@ -13,7 +13,7 @@ export default function Loading() {
     interval: 10000,
     onCompleted: () => {
       setTimeout(() => {
-        //navigate(`/result/${taskId}`, { replace: true });
+        navigate(`/result/${taskId}`, { replace: true });
       }, 1000);
     },
     onFailed: (errorMsg) => {
