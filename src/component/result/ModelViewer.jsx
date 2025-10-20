@@ -36,7 +36,6 @@ function ErrorFallback() {
 }
 
 export const ModelViewer = ({ modelUrl }) => {
-  console.log('ModelViewer received URL:', modelUrl);
 
   // URL 검증은 컴포넌트 레벨에서 (Canvas 밖에서)
   if (!modelUrl || typeof modelUrl !== 'string') {

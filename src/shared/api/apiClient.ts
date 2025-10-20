@@ -12,7 +12,6 @@ export const apiClient = axios.create({
 // 요청 인터셉터
 apiClient.interceptors.request.use(
   (config) => {
-    console.log(`🚀 API 요청: ${config.method?.toUpperCase()} ${config.url}`);
     return config;
   },
   (error) => {
@@ -24,7 +23,6 @@ apiClient.interceptors.request.use(
 // 응답 인터셉터
 apiClient.interceptors.response.use(
   (response: AxiosResponse) => {
-    console.log(`✅ API 응답: ${response.config.url}`, response.data);
     return response;
   },
   (error: AxiosError) => {
