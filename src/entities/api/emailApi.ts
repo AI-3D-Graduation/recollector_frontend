@@ -18,7 +18,7 @@ export const emailApi = {
   async submitEmail(taskId: string, email: string): Promise<EmailSubmitResponse> {
     const { data } = await apiClient.post<EmailSubmitResponse>(
       `/api/tasks/${taskId}/set-email`,
-      { email }
+      { recipient_email: email }
     );
     return data;
   }
