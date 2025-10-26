@@ -90,7 +90,3 @@ npm run build
 # 테스트 실행
 npm test
 ```
-
-## 프록시 설정
-
-백엔드 API는 `http://localhost:8000`으로 프록시 설정되어 있습니다.

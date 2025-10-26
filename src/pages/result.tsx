@@ -4,6 +4,7 @@ import { ModelViewer } from '../component/result/ModelViewer';
 import { taskApi } from '../entities';
 import { TaskDetailResponse } from '../entities/api/taskApi';
 import { Button } from '../shared';
+import { API_CONFIG } from '../shared/api';
 
 export default function Result() {
   const navigate = useNavigate();
@@ -44,7 +45,7 @@ export default function Result() {
 
   const handleDownload = () => {
     if (modelData?.model_url) {
-      const fullUrl = `http://localhost:8000${modelData.model_url}`;
+      const fullUrl = `${API_CONFIG.BASE_URL}${modelData.model_url}`;
       const link = document.createElement('a');
       link.href = fullUrl;
       link.download = `model_${taskId}.glb`;
@@ -87,7 +88,7 @@ export default function Result() {
   }
 
   const modelUrl = modelData?.model_url
-    ? `http://localhost:8000${modelData.model_url}`
+    ? `${API_CONFIG.BASE_URL}${modelData.model_url}`
     : null;
 
   return (
